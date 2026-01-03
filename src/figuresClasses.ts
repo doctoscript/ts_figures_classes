@@ -1,13 +1,13 @@
 enum Shape {
-  triangle = 'triangle',
-  circle = 'circle',
-  rectangle = 'rectangle',
+  Triangle = 'triangle',
+  Circle = 'circle',
+  Rectangle = 'rectangle',
 }
 
 enum Color {
-  red = 'red',
-  green = 'green',
-  blue = 'blue',
+  Red = 'red',
+  Green = 'green',
+  Blue = 'blue',
 }
 
 export interface Figure {
@@ -17,7 +17,7 @@ export interface Figure {
 }
 
 export class Triangle implements Figure {
-  public shape: Shape.triangle = Shape.triangle;
+  public shape: Shape.Triangle = Shape.Triangle;
 
   constructor(
     public color: Color,
@@ -29,11 +29,11 @@ export class Triangle implements Figure {
       this.a <= 0 ||
       this.b <= 0 ||
       this.c <= 0 ||
-      a >= b + c ||
-      b >= a + c ||
-      c >= a + b
+      this.a >= this.b + this.c ||
+      this.b >= this.a + this.c ||
+      this.c >= this.a + this.b
     ) {
-      throw new Error('your error message');
+      throw new Error("Sides a, b and c can't form a triangle");
     }
   }
 
@@ -46,14 +46,14 @@ export class Triangle implements Figure {
 }
 
 export class Circle implements Figure {
-  public shape: Shape.circle = Shape.circle;
+  public shape: Shape.Circle = Shape.Circle;
 
   constructor(
     public color: Color,
     public radius: number,
   ) {
     if (radius <= 0) {
-      throw new Error('Radius is not a positive value');
+      throw new Error('Radius must be positive number');
     }
   }
 
@@ -63,7 +63,7 @@ export class Circle implements Figure {
 }
 
 export class Rectangle implements Figure {
-  public shape: Shape.rectangle = Shape.rectangle;
+  public shape: Shape.Rectangle = Shape.Rectangle;
 
   constructor(
     public color: Color,
@@ -71,7 +71,7 @@ export class Rectangle implements Figure {
     public height: number,
   ) {
     if (this.width <= 0 || this.height <= 0) {
-      throw new Error('your error message');
+      throw new Error('Width must be positive number');
     }
   }
 
